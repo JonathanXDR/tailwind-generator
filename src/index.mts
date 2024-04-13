@@ -7,6 +7,7 @@ import { getTailwindBy, removeExtraSpace } from './utils/index.mjs';
 
 import type { CamelCaseToKebabCase } from './utils/type.mjs';
 import { twMerge } from 'tailwind-merge';
+import { context } from './transform/context.mjs';
 
 const gather = (decl: [string, string], i = 0): string | false => {
   if (i === rulers.length) {
@@ -28,7 +29,16 @@ type KebabCaseProperties<T> = {
   [K in keyof T as CamelCaseToKebabCase<K>]: T[K];
 };
 
-export function gen(css: CSS.Properties | KebabCaseProperties<CSS.Properties>) {
+export function gen(
+  css: CSS.Properties | KebabCaseProperties<CSS.Properties>,
+  variations?: Record<string, string>,
+) {
+  if (variations) {
+    Object.entries(variations).map(([k, v]) => {
+      context.varMap[k] = v;
+    });
+  }
+
   const success: string[] = [];
   const failed: string[] = [];
 

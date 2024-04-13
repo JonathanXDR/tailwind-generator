@@ -3,16 +3,22 @@ import { gen } from '../src/index.mjs';
 describe('convert', () => {
   test('kebab case', () => {
     expect(
-      gen({
-        'align-items': 'flex-start',
-        background: '#FFF',
-        display: 'flex',
-        'flex-direction': 'column',
-        gap: '16px',
-        padding: '24px',
-        width: '1152px',
-      }).success,
-    ).toBe('items-start flex flex-col bg-white gap-[16px] p-6 w-[1152px]');
+      gen(
+        {
+          'align-items': 'flex-start',
+          background: '#FFF',
+          display: 'flex',
+          'flex-direction': 'column',
+          gap: '16px',
+          padding: '24px',
+          width: '1152px',
+          height: 'var(--var-height)',
+        },
+        {
+          'var-height': '12px',
+        },
+      ).success,
+    ).toBe('items-start flex flex-col bg-white gap-[16px] p-6 w-[1152px] h-3');
   });
 
   test('camel case', () => {
