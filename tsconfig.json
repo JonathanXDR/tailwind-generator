@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "include": ["src", "src/**/*.json"],
+  "compilerOptions": {
+    "strict": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "target": "ESNext",
+    "newLine": "LF",
+    "assumeChangesOnlyAffectDirectDependencies": true,
+    "declaration": true,
+    "importHelpers": true,
+    "exactOptionalPropertyTypes": true,
+    "esModuleInterop": true,
+    "checkJs": false,
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "pretty": true,
+    "rootDir": "./src",
+    "outDir": "./esm"
+  }
+}

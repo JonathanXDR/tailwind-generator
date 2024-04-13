@@ -1,2 +1,2 @@
-# tailwind-gen
+# tailwind-generator
 css decl to tailwind
